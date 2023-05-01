@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+<meta charset="utf-8">
+<title>Ajout des fruits</title>
+</head>
+<body>
+<div th:replace="template"></div>
+<div class="container mt-5">
+<div class="card">
+ <div class="card-header">
+ Modifier des Fruits
+ </div>
+ <div class="card-body">
+<form th:action="@{saveFruit}" method="post">
+<div class="form-group">
+<label class="control-label" hidden>ID Fruit :</label>
+ <input type="hidden" name="idFruit" class="form-control"
+th:value="${fruit.idFruit}" />
+</div>
+<div class="form-group">
+<label class="control-label">Nom Fruit :</label>
+<input type="text" name="nomFruit" class="form-control"
+th:value="${fruit.nomFruit}" />
+<span th:errors= ${fruit.nomFruit} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">Prix Fruit :</label>
+ <input type="text" name="prixFruit" class="form-control"
+th:value="${fruit.prixFruit}" />
+ <span th:errors=${fruit.prixFruit} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">date debut saison :</label>
+<input type="date" name="dateDebSaison" class="form-control"
+th:value="${fruit.dateDebSaison}"/>
+<span th:errors=${fruit.dateDebSaison} class="text-danger">
+</span>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Valider</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
